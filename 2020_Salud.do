@@ -35,7 +35,7 @@ use "$dir\enaho01a-2020-500.dta", clear
 *La variable nos permite determinar el total de horas trabajadas en la ocupación principal del entrevistado, la semana pasada.
 cap isid ubigeo conglome vivienda hogar codperso
 isid ubigeo conglome vivienda hogar codperso
-keep ubigeo conglome vivienda hogar codperso dominio p513t 
+keep ubigeo conglome vivienda hogar codperso dominio p513t p505
 sort conglome vivienda hogar ubigeo
 * ahora unimos tanto la base Empleo y la base Salud/ ambas tienen los mismos ids
 merge 1:1 ubigeo conglome vivienda hogar codperso using "base4.dta"
