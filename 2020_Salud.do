@@ -40,12 +40,6 @@ sort conglome vivienda hogar ubigeo
 * ahora unimos tanto la base Empleo y la base Salud/ ambas tienen los mismos ids
 merge 1:1 ubigeo conglome vivienda hogar codperso using "base4.dta"
 drop _m 
-* nos quedamos con las peronas que reportan horas trabajadas y eliminamos los missings values
-* p513t
-replace p513t = 0 if p513t == .
-drop if p513t == 0
-drop if p4191 == 2
-drop if p4195 == 2
 *PROMEDIO DE HORAS TRABAJADAS SEMANALES POR LOS AFILIADOS A ESSALUD
  collapse (mean) p513t , by(p4191 )
  collapse (mean) p513t , by(p4195 )
