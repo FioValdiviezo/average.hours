@@ -35,17 +35,11 @@ use "$dir\enaho01a-2019-500.dta", clear
 *La variable nos permite determinar el total de horas trabajadas en la ocupación principal del entrevistado, la semana pasada.
 cap isid ubigeo conglome vivienda hogar codperso
 isid ubigeo conglome vivienda hogar codperso
-keep ubigeo conglome vivienda hogar codperso dominio p513t 
+keep ubigeo conglome vivienda hogar codperso dominio p513t p505
 sort conglome vivienda hogar ubigeo
 * ahora unimos tanto la base Empleo y la base Salud/ ambas tienen los mismos ids
 merge 1:1 ubigeo conglome vivienda hogar codperso using "base3.dta"
 drop _m 
-* nos quedamos con las peronas que reportan horas trabajadas y eliminamos los missings values
-* p513t
-replace p513t = 0 if p513t == .
-drop if p513t == 0
-drop if p4191 == 2
-drop if p4195 == 2
 *PROMEDIO DE HORAS TRABAJADAS SEMANALES POR LOS AFILIADOS A ESSALUD
  collapse (mean) p513t , by(p4191 )
  collapse (mean) p513t , by(p4195 )
